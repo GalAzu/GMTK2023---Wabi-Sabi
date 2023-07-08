@@ -46,6 +46,9 @@ public class AbilityCastPoint : MonoBehaviour
             case Abilities.Slowing:
                 Instantiate(slowingProjectile, transform.position, Quaternion.identity);
                 break;
+            case Abilities.Freezing:
+                Instantiate(freezingProjectile, transform.position, Quaternion.identity);
+                break;
         }
     }
 }
