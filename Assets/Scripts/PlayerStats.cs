@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -9,22 +10,7 @@ public class PlayerStats : MonoBehaviour
     private float initSpeed = 5;
     public float moveSpeed;
     public float jumpForce = 5;
-    private bool isBurning;
     private Rigidbody2D rb;
-
-    public float burnCounter;
-    public float innerBurnCounter;
-    public enum StatusEffectType
-    {
-        None,
-        Burn,
-        Freeze
-    }
-
-    public StatusEffectType statusEffect;
-
-
-    public Action<Projectile> statusEffectActivation;
 
     private float knockbackForce = 1;
 
@@ -35,7 +21,6 @@ public class PlayerStats : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = initSpeed;
     }
-
     public void OnDamage(float damage, Vector2 damageSource)
     {
         curHealth -= damage;
@@ -45,7 +30,7 @@ public class PlayerStats : MonoBehaviour
 
         if (curHealth <= 0)
         {
-            Die();
+            Death();
         }
     }
     public void OnDamage(float damage)
@@ -54,62 +39,83 @@ public class PlayerStats : MonoBehaviour
         //Update HP UI
         if (curHealth <= 0)
         {
-            Die();
+            Death();
         }
     }
 
-    private void Die()
+    private void Death()
     {
         Debug.Log("DEATH IS UPON US");
     }
-
-    public void OnSlow(float slowRate)
+    private void ApplyKnockback(Vector2 damageSource)
     {
-        moveSpeed *= 0.1f * slowRate;
+        Vector2 knockbackDirection = -((Vector2)transform.position - damageSource).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
-
-    public IEnumerator OnFreeze(float freezeTime)
+    #region AbilitiesAndStatusEffects
+    public enum StatusEffectType
     {
-        statusEffect = StatusEffectType.Freeze;
-        moveSpeed = 0;
-        yield return new WaitForSeconds(freezeTime);
-        moveSpeed = initSpeed;
+        None,
+        Burn,
+        Freeze
+    }
+    public List<StatusEffectType> statusEffects;
+    private void AddStatusEffect(StatusEffectType _statusEffect)
+    {
+        statusEffects.Add(_statusEffect);
+    }
+    private void RemoveStatusEffect(StatusEffectType _statusEffect)
+    {
+        statusEffects.Remove(_statusEffect);
+    }
+    public IEnumerator OnFreeze(float freezeTime, float freezeDamage)
+    {
+        float freezeCounter = 0;
+        float innerFreezeCounter = 2;
+        AddStatusEffect(StatusEffectType.Freeze);
+        while (freezeCounter < freezeTime)
+        {
+            moveSpeed = 0;
+            innerFreezeCounter -= Time.deltaTime;
+            if (innerFreezeCounter <= 0)
+            {
+                OnDamage(freezeDamage);
+                innerFreezeCounter = 2;
+            }
+            freezeCounter += Time.deltaTime;
+            yield return null;
+            RemoveStatusEffect(StatusEffectType.Freeze);
+            moveSpeed = initSpeed;
+        }
     }
     public IEnumerator OnBurn(float burnTime, float burnDamage)
     {
         float burnCounter = 0;
         float innerBurnCounter = 2;
-        statusEffect = StatusEffectType.Burn;
-        while (burnCounter < burnTime) // Keep running until the burnTime is reached
+        AddStatusEffect(StatusEffectType.Burn);
+        while (burnCounter < burnTime)
         {
-            Debug.Log("COROUTINE STILL RUNNING");
             innerBurnCounter -= Time.deltaTime;
             if (innerBurnCounter <= 0)
             {
                 OnDamage(burnDamage);
-                Debug.Log("BURN DAMAGE");
                 innerBurnCounter = 2;
             }
             burnCounter += Time.deltaTime;
             yield return null;
         }
-        statusEffect = StatusEffectType.None;
+        RemoveStatusEffect(StatusEffectType.Burn);
     }
-
-
-    private void ApplyRecoil(Vector2 damageSource)
+    public void StartBurnCorutine()
     {
-        Vector2 knockbackDirection = -((Vector2)transform.position - damageSource).normalized;
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        if (!statusEffects.Contains(StatusEffectType.Burn))
+            StartCoroutine(OnBurn(10, 6));
     }
-    private void ApplyKnockback(Vector2 hitDirection)
+    public void StartFreezeCorutine()
     {
-        float recoilMultiplier = 1f + (stackDamagePercentage / 100f);
-        Vector2 recoilForceVector = Vector2.up * recoilMultiplier;
-        rb.AddForce(recoilForceVector, ForceMode2D.Impulse);
-
+        if (!statusEffects.Contains(StatusEffectType.Freeze))
+            StartCoroutine(OnFreeze(10, 2));
     }
-    public void StartBurnCorutine() => StartCoroutine(OnBurn(15, 5));
-    public void StartFreezeCorutine() => StartCoroutine(OnFreeze(5));
+    #endregion
 
 }

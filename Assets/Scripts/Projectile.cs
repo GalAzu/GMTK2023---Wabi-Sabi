@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
 
     private float projectileLifeSpan = 5f;
     private float projectileRemaningTime;
+    [SerializeField]
+    protected float projectileSpeed = 10;
 
     [SerializeField]
     private bool shootingRight;
@@ -38,12 +40,12 @@ public class Projectile : MonoBehaviour
         if (!shootingRight)
         {
             Debug.Log("SHOOT LEFT");
-            transform.Translate(-direction * Time.deltaTime * 10);
+            transform.Translate(-direction * Time.deltaTime * projectileSpeed);
         }
         else
         {
             Debug.Log("SHOOT RIGHT");
-            transform.Translate(direction * Time.deltaTime * 10);
+            transform.Translate(direction * Time.deltaTime * projectileSpeed);
         }
     }
 

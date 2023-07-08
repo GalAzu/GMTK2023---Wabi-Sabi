@@ -14,8 +14,9 @@ public class AbilitiesCaster : MonoBehaviour
     public Transform abilitiesCastPoint;
 
     [SerializeField] private Fireball fireballProjectile;
-    [SerializeField] private SlowingProjectile slowingProjectile;
+    [SerializeField] private MineProjectile slowingProjectile;
     [SerializeField] private FreezingProjectile freezingProjectile;
+    [SerializeField]
     private Array abilitiesArray;
     private bool shootingDirection { get => playerMovement.isFacingRight; }
 
@@ -51,7 +52,7 @@ public class AbilitiesCaster : MonoBehaviour
                 fireball.SetShootingDirection(shootingDirection);
                 break;
             case Abilities.Slowing:
-                SlowingProjectile slowing = Instantiate(slowingProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                MineProjectile slowing = Instantiate(slowingProjectile, abilitiesCastPoint.position, Quaternion.identity);
                 slowing.SetShootingDirection(shootingDirection);
                 break;
             case Abilities.Freezing:

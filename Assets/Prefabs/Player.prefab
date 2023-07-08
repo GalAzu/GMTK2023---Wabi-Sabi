@@ -363,9 +363,7 @@ MonoBehaviour:
   curHealth: 202020
   moveSpeed: 100
   jumpForce: 6.5
-  burnCounter: 0
-  innerBurnCounter: 3
-  statusEffect: 0
+  statusEffects: 
 --- !u!95 &5119713776252243499
 Animator:
   serializedVersion: 4
@@ -398,10 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773e0b558519ba04b926ce4bb71b963f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCastTimerMax: 5
+  abilityCastTimerMax: 15
   abilityCastCurrentTime: 0
   playerMovement: {fileID: 0}
   abilitiesCastPoint: {fileID: 690864241}
   fireballProjectile: {fileID: -3977356124268767255, guid: cf449f78d5ae6e84888ef9d0fc822e3c, type: 3}
   slowingProjectile: {fileID: 0}
-  freezingProjectile: {fileID: 0}
+  freezingProjectile: {fileID: 216665814576137570, guid: f33130473fccba24e8d2fb782c97e7ae, type: 3}
