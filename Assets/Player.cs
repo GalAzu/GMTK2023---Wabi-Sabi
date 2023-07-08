@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-public class Player : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     public float maxHealth = 100;
     public float curHealth;
