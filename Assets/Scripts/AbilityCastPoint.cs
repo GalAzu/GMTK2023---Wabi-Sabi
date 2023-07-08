@@ -9,6 +9,7 @@ public class AbilityCastPoint : MonoBehaviour
     private float abilityCastCurrentTime;
 
     [SerializeField] private GameObject fireballProjectile;
+    [SerializeField] private GameObject slowingProjectile;
 
     private Array abilitiesArray;
 
@@ -40,6 +41,9 @@ public class AbilityCastPoint : MonoBehaviour
         {
             case Abilities.Fireball:
                 Instantiate(fireballProjectile, transform.position, Quaternion.identity);
+                break;
+            case Abilities.Slowing:
+                Instantiate(slowingProjectile, transform.position, Quaternion.identity);
                 break;
         }
     }
