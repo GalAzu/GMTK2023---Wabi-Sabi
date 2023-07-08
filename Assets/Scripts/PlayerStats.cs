@@ -109,7 +109,7 @@ public class PlayerStats : MonoBehaviour
         rb.AddForce(recoilForceVector, ForceMode2D.Impulse);
 
     }
-    public void StartBurnCorutine() => StartCoroutine(OnBurn(3, 5));
+    public void StartBurnCorutine() => StartCoroutine(OnBurn(15, 5));
     public void StartFreezeCorutine() => StartCoroutine(OnFreeze(5));
 
 }
