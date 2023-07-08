@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr;
     public Rigidbody2D rb;
     public PlayerStats player;
-    private bool isFacingRight;
+    public bool isFacingRight;
 
     void Awake()
     {
