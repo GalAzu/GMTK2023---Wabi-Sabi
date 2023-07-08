@@ -297,6 +297,9 @@ MonoBehaviour:
   curHealth: 0
   moveSpeed: 0
   jumpForce: 5
+  burnCounter: 0
+  innerBurnCounter: 0
+  statusEffect: 0
 --- !u!95 &5119713776252243499
 Animator:
   serializedVersion: 4

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class HealthBar : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class HealthBar : MonoBehaviour
 
     private float healthBarValue;
 
+    private void Awake()
+    {
+        healthBar = GetComponent<Slider>();
+        healthBarValue = maxHealthValue;
+
+    }
+
+    [Button]
     public void HealthBarDamage(float damageAmount)
     {
         healthBarValue -= damageAmount;
