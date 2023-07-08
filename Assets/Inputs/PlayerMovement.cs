@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Sirenix.OdinInspector;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerStats))]
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public PlayerStats player;
     private bool isFacingRight;
+    [ShowInInspector]
     public bool IsFacingRight { get => isFacingRight; }
 
     void Awake()

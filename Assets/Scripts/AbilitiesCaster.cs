@@ -9,6 +9,7 @@ public class AbilitiesCaster : MonoBehaviour
     private float abilityCastTimerMax;
     [SerializeField]
     private float abilityCastCurrentTime;
+    [SerializeField]
     private PlayerMovement playerMovement;
     public Transform abilitiesCastPoint;
 
@@ -19,7 +20,7 @@ public class AbilitiesCaster : MonoBehaviour
 
     private void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
         abilityCastCurrentTime = abilityCastTimerMax;
         abilitiesArray = Enum.GetValues(typeof(Abilities));
     }
