@@ -10,6 +10,7 @@ public class AbilityCastPoint : MonoBehaviour
 
     [SerializeField] private GameObject fireballProjectile;
     [SerializeField] private GameObject slowingProjectile;
+    [SerializeField] private GameObject freezingProjectile;
 
     private Array abilitiesArray;
 

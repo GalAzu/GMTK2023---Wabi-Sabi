@@ -590,6 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 497779248}
   - component: {fileID: 497779247}
+  - component: {fileID: 497779249}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -664,6 +665,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &497779249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497779246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &509190303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 947674997}
   - component: {fileID: 947674996}
+  - component: {fileID: 947674998}
   m_Layer: 0
   m_Name: Ground (2)
   m_TagString: Untagged
@@ -1196,6 +1211,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &947674998
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947674995}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &953898588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578624993}
   - component: {fileID: 1578624992}
+  - component: {fileID: 1578624994}
   m_Layer: 0
   m_Name: Ground (3)
   m_TagString: Untagged
@@ -1483,6 +1525,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1578624994
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578624991}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1686989277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048091647}
   - component: {fileID: 2048091646}
+  - component: {fileID: 2048091648}
   m_Layer: 0
   m_Name: Ground (1)
   m_TagString: Untagged
@@ -2069,6 +2138,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2048091648
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048091645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2059947942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballProjectile: {fileID: 1087114085491984877, guid: cf449f78d5ae6e84888ef9d0fc822e3c, type: 3}
   slowingProjectile: {fileID: 4855362502675932325, guid: 56dae1aad856b9347916e7b081948533, type: 3}
+  freezingProjectile: {fileID: 652970943793525321, guid: f33130473fccba24e8d2fb782c97e7ae, type: 3}
 --- !u!4 &2059947944
 Transform:
   m_ObjectHideFlags: 0

@@ -10,4 +10,13 @@ public class SlowingProjectile : MonoBehaviour
     {
         transform.Translate(direction * Time.deltaTime * 10);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            player.OnDamage(3f);
+            player.OnSlow(5f);
+        }
+    }
 }
