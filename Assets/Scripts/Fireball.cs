@@ -9,7 +9,7 @@ public class Fireball : Projectile
         if (collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats player))
         {
             player.OnDamage(5f);
-            player.OnBurn(3f, 3f);
+            StartCoroutine(player.OnBurn(100f, 5f));
             Destroy(gameObject);
         }
     }
