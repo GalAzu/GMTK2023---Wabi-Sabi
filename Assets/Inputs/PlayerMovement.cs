@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 5f;
+    public float moveSpeed { get => player.moveSpeed; }
+    public float jumpForce { get => player.jumpForce; }
     public Transform groundCheck;
     public LayerMask groundLayer;
 
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float horizontal;
     private SpriteRenderer sr;
     public Rigidbody2D rb;
+    public Player player;
     private bool isFacingRight;
     void Awake()
     {
