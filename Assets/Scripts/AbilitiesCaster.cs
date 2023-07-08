@@ -17,7 +17,6 @@ public class AbilitiesCaster : MonoBehaviour
     [SerializeField] private SlowingProjectile slowingProjectile;
     [SerializeField] private FreezingProjectile freezingProjectile;
     private Array abilitiesArray;
-    [ShowInInspector]
     private bool shootingDirection { get => playerMovement.isFacingRight; }
 
     private void Awake()
