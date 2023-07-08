@@ -17,7 +17,6 @@ public class AbilitiesCaster : MonoBehaviour
     [SerializeField] private SlowingProjectile slowingProjectile;
     [SerializeField] private FreezingProjectile freezingProjectile;
     private Array abilitiesArray;
-    [ShowInInspector]
     private bool shootingDirection { get => playerMovement.isFacingRight; }
 
     private void Awake()
@@ -38,7 +37,6 @@ public class AbilitiesCaster : MonoBehaviour
 
         if (abilityCastCurrentTime <= 0)
         {
-            abilityCastCurrentTime = abilityCastTimerMax;
             CastAbility((Abilities)abilitiesArray.GetValue(UnityEngine.Random.Range(0, 1/*, abilitiesArray.Length*/)));
             abilityCastCurrentTime = abilityCastTimerMax;
         }
