@@ -1,12 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private DefenceBar defenseBar;
-
     public float maxHealth = 100;
     public float curHealth;
     private float initSpeed = 5;
@@ -29,7 +26,6 @@ public class PlayerStats : MonoBehaviour
     {
         curHealth -= damage;
 
-        
         ApplyKnockback(damageSource);
 
 
@@ -41,9 +37,7 @@ public class PlayerStats : MonoBehaviour
     public void OnDamage(float damage)
     {
         curHealth -= damage;
-
-        defenseBar.DefenseBarDamage(1f);
-
+        //Update HP UI
         if (curHealth <= 0)
         {
             Die();
@@ -96,4 +90,5 @@ public class PlayerStats : MonoBehaviour
         rb.AddForce(recoilForceVector, ForceMode2D.Impulse);
 
     }
+
 }
