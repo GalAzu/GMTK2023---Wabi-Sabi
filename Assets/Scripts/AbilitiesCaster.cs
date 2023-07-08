@@ -1,0 +1,62 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+using Sirenix.OdinInspector;
+public class AbilitiesCaster : MonoBehaviour
+{
+    [SerializeField]
+    private float abilityCastTimerMax;
+    [SerializeField]
+    private float abilityCastCurrentTime;
+    private PlayerMovement playerMovement;
+    public Transform abilitiesCastPoint;
+
+    [SerializeField] private Fireball fireballProjectile;
+    [SerializeField] private SlowingProjectile slowingProjectile;
+    [SerializeField] private FreezingProjectile freezingProjectile;
+    private Array abilitiesArray;
+
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+        abilityCastCurrentTime = abilityCastTimerMax;
+        abilitiesArray = Enum.GetValues(typeof(Abilities));
+    }
+
+    private void Update()
+    {
+        AbilityCastTimer();
+    }
+
+    private void AbilityCastTimer()
+    {
+        abilityCastCurrentTime -= Time.deltaTime;
+
+        if (abilityCastCurrentTime <= 0)
+        {
+            abilityCastCurrentTime = abilityCastTimerMax;
+            CastAbility((Abilities)abilitiesArray.GetValue(UnityEngine.Random.Range(0, 1/*, abilitiesArray.Length*/)));
+            abilityCastCurrentTime = abilityCastTimerMax;
+        }
+    }
+    [Button]
+    private void CastAbility(Abilities castAbility)
+    {
+        switch (castAbility)
+        {
+            case Abilities.Fireball:
+                Fireball fireball = Instantiate(fireballProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                fireball.SetShootingDirection(playerMovement.IsFacingRight);
+                break;
+            case Abilities.Slowing:
+                SlowingProjectile slowing = Instantiate(slowingProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                slowing.SetShootingDirection(playerMovement.IsFacingRight);
+                break;
+            case Abilities.Freezing:
+                FreezingProjectile freezing = Instantiate(freezingProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                freezing.SetShootingDirection(playerMovement.IsFacingRight);
+                break;
+        }
+    }
+}
