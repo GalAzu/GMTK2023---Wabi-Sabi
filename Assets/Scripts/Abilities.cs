@@ -6,4 +6,5 @@ public enum Abilities
 {
     Fireball,
     Slowing,
+    Freezing,
 }
