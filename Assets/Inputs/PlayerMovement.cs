@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerStats))]
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,17 +21,18 @@ public class PlayerMovement : MonoBehaviour
     public float horizontal;
     private SpriteRenderer sr;
     public Rigidbody2D rb;
-    public Player player;
+    public PlayerStats player;
     private bool isFacingRight;
     void Awake()
     {
+        player = GetComponent<PlayerStats>();
         sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()

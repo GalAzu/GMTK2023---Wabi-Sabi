@@ -13,7 +13,7 @@ public class FreezingProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Player>(out Player player))
+        if (collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats player))
         {
             player.OnDamage(1f);
             player.OnFreeze(2f);
