@@ -9,7 +9,7 @@ public class FreezingProjectile : Projectile
         if (collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats player))
         {
             player.OnDamage(1f);
-            player.OnFreeze(2f);
+            StartCoroutine(player.OnFreeze(2f));
             Destroy(gameObject);
         }
     }

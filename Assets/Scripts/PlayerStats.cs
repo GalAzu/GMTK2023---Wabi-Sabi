@@ -72,10 +72,12 @@ public class PlayerStats : MonoBehaviour
             OnDamage(burnDamage); // Apply burn damage without recoil
 
             counter += Time.deltaTime;
+
             yield return null;
         }
 
         isBurning = false;
+        
     }
 
     private void ApplyRecoil(Vector2 damageSource)
