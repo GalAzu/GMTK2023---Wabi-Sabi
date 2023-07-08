@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 6662907}
   - component: {fileID: 6662909}
   - component: {fileID: 6662908}
+  - component: {fileID: 6662910}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -156,8 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54a75c1e9389eb41bc7b0900cdef96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 5
   groundCheck: {fileID: 284420412}
   groundLayer:
     serializedVersion: 2
@@ -167,6 +166,8 @@ MonoBehaviour:
   isCrouching: 0
   horizontal: 0
   rb: {fileID: 0}
+  player: {fileID: 0}
+  isFacingRight: 0
 --- !u!212 &6662905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -360,6 +361,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6662910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6662903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fd2fdc5f5a86048881868f967ea290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  curHealth: 0
+  moveSpeed: 0
+  jumpForce: 5
+  burnCounter: 0
+  innerBurnCounter: 0
+  statusEffect: 0
 --- !u!1 &284420411
 GameObject:
   m_ObjectHideFlags: 0
