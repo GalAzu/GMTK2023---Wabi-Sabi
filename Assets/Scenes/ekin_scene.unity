@@ -875,6 +875,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142376267}
   m_CullTransparentMesh: 1
+--- !u!1001 &266288448
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -7538451266933850248, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: defenceBar
+      value: 
+      objectReference: {fileID: 764268343}
+    - target: {fileID: 4073495432182528914, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_Name
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528923, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528923, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: curHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073495432182528927, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1102197205507834141, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
 --- !u!1 &300073061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1119,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330650105}
   m_CullTransparentMesh: 1
+--- !u!4 &377460476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2071767050484203035, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+  m_PrefabInstance: {fileID: 266288448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &430158566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDefenseValue: 100
-  defenseBarIncreasePerSecond: 0
+  defenseBarIncreasePerSecond: 5
 --- !u!1 &830819798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,9 +2277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0f9a1766a3dc14ba93880ec1db59c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerOneHealthBar: {fileID: 0}
+  playerOneHealthBar: {fileID: 1856766487}
   playerOneDefenceBar: {fileID: 1206844713}
-  playerTwoHealthBar: {fileID: 0}
+  playerTwoHealthBar: {fileID: 330650107}
   playerTwoDefenceBar: {fileID: 764268343}
 --- !u!1 &1140200145
 GameObject:
@@ -2245,9 +2320,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -734778201259509227, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
+      propertyPath: defenceBar
+      value: 
+      objectReference: {fileID: 1206844713}
+    - target: {fileID: 1279003942191133616, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
+      propertyPath: defenceBar
+      value: 
+      objectReference: {fileID: 1206844713}
     - target: {fileID: 5385281869643523937, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385281869643523944, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
+      propertyPath: curHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5385281869643523948, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
       propertyPath: m_RootOrder
@@ -2399,7 +2486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDefenseValue: 100
-  defenseBarIncreasePerSecond: 0
+  defenseBarIncreasePerSecond: 5
 --- !u!1 &1262903923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,6 +2563,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262903923}
   m_CullTransparentMesh: 1
+--- !u!1 &1312623257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4073495432182528914, guid: 0f26685bbbdffee42b75657b0ffe4cd9, type: 3}
+  m_PrefabInstance: {fileID: 266288448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1312623266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312623257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773e0b558519ba04b926ce4bb71b963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCastTimerMax: 5
+  abilityCastCurrentTime: 0
+  playerMovement: {fileID: 0}
+  abilitiesCastPoint: {fileID: 377460476}
+  fireballProjectile: {fileID: -3977356124268767255, guid: cf449f78d5ae6e84888ef9d0fc822e3c, type: 3}
+  slowingProjectile: {fileID: 2424804460171123137, guid: 56dae1aad856b9347916e7b081948533, type: 3}
+  freezingProjectile: {fileID: 216665814576137570, guid: f33130473fccba24e8d2fb782c97e7ae, type: 3}
 --- !u!1 &1344583837
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4073495432182528921}
   - component: {fileID: 4073495432182528923}
   - component: {fileID: 3834616471794619096}
+  - component: {fileID: -7538451266933850248}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -114,6 +115,7 @@ MonoBehaviour:
   horizontal: 0
   rb: {fileID: 0}
   player: {fileID: 0}
+  isFacingRight: 0
 --- !u!114 &4073495432182528926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,13 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fdc5f5a86048881868f967ea290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   maxHealth: 100
   curHealth: 5000
   moveSpeed: 100
   jumpForce: 6.5
-  burnCounter: 0
-  innerBurnCounter: 0
-  statusEffect: 0
+  statusEffects: 
 --- !u!95 &3834616471794619096
 Animator:
   serializedVersion: 4
@@ -326,6 +327,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7538451266933850248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4073495432182528914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2650ad06ec7a8e4fa2a945305336e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defenceBar: {fileID: 0}
 --- !u!1 &4073495432460515422
 GameObject:
   m_ObjectHideFlags: 0

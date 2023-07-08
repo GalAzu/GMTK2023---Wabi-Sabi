@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private PlayerID playerID;
+
     public float maxHealth = 100;
     public float curHealth;
     private float initSpeed = 5;
@@ -16,17 +18,21 @@ public class PlayerStats : MonoBehaviour
 
     private float stackDamagePercentage;
 
+    private PlayerDefence playerDefence;
+
     void Awake()
     {
+        playerDefence = GetComponent<PlayerDefence>();
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = initSpeed;
     }
     public void OnDamage(float damage, Vector2 damageSource)
     {
+        if (playerDefence.Defend()) return;
+
         curHealth -= damage;
 
         ApplyKnockback(damageSource);
-
 
         if (curHealth <= 0)
         {
@@ -35,8 +41,21 @@ public class PlayerStats : MonoBehaviour
     }
     public void OnDamage(float damage)
     {
+        if (playerDefence.Defend()) return;
+        
+
         curHealth -= damage;
-        //Update HP UI
+
+        switch (playerID)
+        {
+            case PlayerID.PlayerOne:
+                UIManager.Instance.playerOneHealthBar.HealthBarDamage(damage);
+                break;
+            case PlayerID.PlayerTwo:
+                UIManager.Instance.playerTwoHealthBar.HealthBarDamage(damage);
+                break;
+        }
+
         if (curHealth <= 0)
         {
             Death();
@@ -108,11 +127,15 @@ public class PlayerStats : MonoBehaviour
     }
     public void StartBurnCorutine()
     {
+        if (playerDefence.Defend()) return;
+
         if (!statusEffects.Contains(StatusEffectType.Burn))
             StartCoroutine(OnBurn(10, 6));
     }
     public void StartFreezeCorutine()
     {
+        if (playerDefence.Defend()) return;
+
         if (!statusEffects.Contains(StatusEffectType.Freeze))
             StartCoroutine(OnFreeze(10, 2));
     }

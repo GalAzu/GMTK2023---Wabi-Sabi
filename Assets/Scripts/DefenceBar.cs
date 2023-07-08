@@ -8,9 +8,12 @@ public class DefenceBar : MonoBehaviour
     private Slider defenseBar;
 
     [SerializeField] private float maxDefenseValue = 100f;
+    public float MaxDefenceValue { get => maxDefenseValue; }
     [SerializeField] private float defenseBarIncreasePerSecond;
 
     private float defenseBarValue;
+    public float DefenceBarValue { get => defenseBarValue; }
+
     private float defenseBarTimer = 0f;
 
     private void Awake()
