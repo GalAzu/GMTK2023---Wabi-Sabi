@@ -8,15 +8,14 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private float maxHealthValue = 100f;
 
-    private Slider healthBar;
+    private Image healthBar;
 
     private float healthBarValue;
 
     private void Awake()
     {
-        healthBar = GetComponent<Slider>();
+        healthBar = GetComponent<Image>();
         healthBarValue = maxHealthValue;
-
     }
 
     [Button]
@@ -24,6 +23,6 @@ public class HealthBar : MonoBehaviour
     {
         healthBarValue -= damageAmount;
         healthBarValue = Mathf.Clamp(healthBarValue, 0f, maxHealthValue);
-        healthBar.value = healthBarValue;
+        healthBar.fillAmount = healthBarValue / 100;
     }
 }
