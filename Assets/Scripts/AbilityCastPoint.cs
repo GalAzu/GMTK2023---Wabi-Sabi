@@ -7,6 +7,7 @@ public class AbilityCastPoint : MonoBehaviour
 {
     private float abilityCastTimerMax = 0.2f;
     private float abilityCastCurrentTime;
+    private PlayerMovement playerMovement;
 
     [SerializeField] private GameObject fireballProjectile;
     [SerializeField] private GameObject slowingProjectile;
@@ -16,6 +17,7 @@ public class AbilityCastPoint : MonoBehaviour
 
     private void Awake()
     {
+        playerMovement = GetComponentInParent<PlayerMovement>();
         abilityCastCurrentTime = abilityCastTimerMax;
         abilitiesArray = Enum.GetValues(typeof(Abilities));
     }
@@ -41,13 +43,16 @@ public class AbilityCastPoint : MonoBehaviour
         switch (castAbility)
         {
             case Abilities.Fireball:
-                Instantiate(fireballProjectile, transform.position, Quaternion.identity);
+                GameObject fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity);
+                fireball.GetComponent<Projectile>().SetShootingDirection(playerMovement.IsFacingRight);
                 break;
             case Abilities.Slowing:
-                Instantiate(slowingProjectile, transform.position, Quaternion.identity);
+                GameObject slowing = Instantiate(slowingProjectile, transform.position, Quaternion.identity);
+                slowing.GetComponent<Projectile>().SetShootingDirection(playerMovement.IsFacingRight);
                 break;
             case Abilities.Freezing:
-                Instantiate(freezingProjectile, transform.position, Quaternion.identity);
+                GameObject freezing = Instantiate(freezingProjectile, transform.position, Quaternion.identity);
+                freezing.GetComponent<Projectile>().SetShootingDirection(playerMovement.IsFacingRight);
                 break;
         }
     }

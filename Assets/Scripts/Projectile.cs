@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     private float projectileLifeSpan = 5f;
     private float projectileRemaningTime;
 
+    private bool shootingRight = true;
+
     private void Awake()
     {
         projectileRemaningTime = projectileLifeSpan;
@@ -32,6 +34,18 @@ public class Projectile : MonoBehaviour
 
     private void ProjectileMovement()
     {
-        transform.Translate(direction * Time.deltaTime * 10);
+        if (!shootingRight)
+        {
+            transform.Translate(-direction * Time.deltaTime * 10);
+        }
+        else
+        {
+            transform.Translate(direction * Time.deltaTime * 10);
+        }
+    }
+
+    public void SetShootingDirection(bool isShootingRight)
+    {
+        shootingRight = isShootingRight;
     }
 }
