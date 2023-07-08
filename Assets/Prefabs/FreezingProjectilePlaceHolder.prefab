@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 94805501251029476}
   - component: {fileID: 1668213513091605325}
   - component: {fileID: 216665814576137570}
+  - component: {fileID: 3548736343917321090}
   m_Layer: 0
   m_Name: FreezingProjectilePlaceHolder
   m_TagString: Untagged
@@ -97,3 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045d0fd487c8b414cb4ce6b1aeb8d944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &3548736343917321090
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652970943793525321}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
