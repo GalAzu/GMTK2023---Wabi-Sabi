@@ -13,7 +13,7 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.TryGetComponent<Player>(out Player player))
+        if (collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats player))
         {
             player.OnDamage(5f);
             player.OnBurn(3f, 3f);
