@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class SlowingProjectile : MonoBehaviour
 {
     private Vector3 direction = new Vector3(1f, 0f, 0f);
 
@@ -13,10 +13,10 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.TryGetComponent<Player>(out Player player))
+        if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
-            player.OnDamage(5f);
-            player.OnBurn(3f, 3f);
+            player.OnDamage(3f);
+            player.OnSlow(5f);
         }
     }
 }
