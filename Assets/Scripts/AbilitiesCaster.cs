@@ -32,6 +32,7 @@ public class AbilitiesCaster : MonoBehaviour
     }
     void Start()
     {
+        IntensityState(1);
         InvokeRepeating("IncreaseIntensityLevel", intensityIntervalInSeconds, intensityIntervalInSeconds);
     }
 
