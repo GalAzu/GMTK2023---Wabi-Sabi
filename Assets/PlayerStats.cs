@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     private bool isBurning;
     private Rigidbody2D rb;
 
+    private float knockbackForce = 1;
+
     private float stackDamagePercentage;
 
     void Awake()
@@ -19,10 +22,30 @@ public class PlayerStats : MonoBehaviour
         moveSpeed = initSpeed;
     }
 
+    public void OnDamage(float damage, Vector2 damageSource)
+    {
+        curHealth -= damage;
+
+        ApplyKnockback(damageSource);
+
+
+        if (curHealth <= 0)
+        {
+            Die();
+        }
+    }
     public void OnDamage(float damage)
     {
         curHealth -= damage;
-        ApplyRecoil();
+        if (curHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        throw new NotImplementedException();
     }
 
     public void OnSlow(float slowRate)
@@ -45,7 +68,7 @@ public class PlayerStats : MonoBehaviour
         while (isBurning && counter < burnTime)
         {
             Debug.Log("BURN DAMAGE EFFECT");
-            // OnDamage(burnDamage, Vector2.zero); // Apply burn damage without recoil
+            OnDamage(burnDamage); // Apply burn damage without recoil
 
             counter += Time.deltaTime;
             yield return null;
@@ -54,13 +77,12 @@ public class PlayerStats : MonoBehaviour
         isBurning = false;
     }
 
-    private void ApplyRecoil(Vector2 hitDirection)
+    private void ApplyRecoil(Vector2 damageSource)
     {
-        float recoilMultiplier = 1f + (stackDamagePercentage / 100f);
-        Vector2 recoilForceVector = -hitDirection * recoilMultiplier;
-        rb.AddForce(recoilForceVector, ForceMode2D.Impulse);
+        Vector2 knockbackDirection = -((Vector2)transform.position - damageSource).normalized;
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
-    private void ApplyRecoil()
+    private void ApplyKnockback(Vector2 hitDirection)
     {
         float recoilMultiplier = 1f + (stackDamagePercentage / 100f);
         Vector2 recoilForceVector = Vector2.up * recoilMultiplier;
