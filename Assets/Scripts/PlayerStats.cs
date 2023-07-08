@@ -12,6 +12,20 @@ public class PlayerStats : MonoBehaviour
     private bool isBurning;
     private Rigidbody2D rb;
 
+    public float burnCounter;
+    public float innerBurnCounter;
+    public enum StatusEffectType
+    {
+        None,
+        Burn,
+        Freeze
+    }
+
+    public StatusEffectType statusEffect;
+
+
+    public Action<Projectile> statusEffectActivation;
+
     private float knockbackForce = 1;
 
     private float stackDamagePercentage;
@@ -46,7 +60,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        Debug.Log("DEATH IS UPON US");
     }
 
     public void OnSlow(float slowRate)
@@ -56,29 +70,32 @@ public class PlayerStats : MonoBehaviour
 
     public IEnumerator OnFreeze(float freezeTime)
     {
+        statusEffect = StatusEffectType.Freeze;
         moveSpeed = 0;
         yield return new WaitForSeconds(freezeTime);
         moveSpeed = initSpeed;
     }
-
     public IEnumerator OnBurn(float burnTime, float burnDamage)
     {
-        float counter = 0;
-        isBurning = true;
-
-        while (isBurning && counter < burnTime)
+        float burnCounter = 0;
+        float innerBurnCounter = 2;
+        statusEffect = StatusEffectType.Burn;
+        while (burnCounter < burnTime) // Keep running until the burnTime is reached
         {
-            Debug.Log("BURN DAMAGE EFFECT");
-            OnDamage(burnDamage); // Apply burn damage without recoil
-
-            counter += Time.deltaTime;
-
+            Debug.Log("COROUTINE STILL RUNNING");
+            innerBurnCounter -= Time.deltaTime;
+            if (innerBurnCounter <= 0)
+            {
+                OnDamage(burnDamage);
+                Debug.Log("BURN DAMAGE");
+                innerBurnCounter = 2;
+            }
+            burnCounter += Time.deltaTime;
             yield return null;
         }
-
-        isBurning = false;
-        
+        statusEffect = StatusEffectType.None;
     }
+
 
     private void ApplyRecoil(Vector2 damageSource)
     {
@@ -92,5 +109,7 @@ public class PlayerStats : MonoBehaviour
         rb.AddForce(recoilForceVector, ForceMode2D.Impulse);
 
     }
+    public void StartBurnCorutine() => StartCoroutine(OnBurn(3, 5));
+    public void StartFreezeCorutine() => StartCoroutine(OnFreeze(5));
 
 }

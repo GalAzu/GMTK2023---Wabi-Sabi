@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         projectileRemaningTime -= Time.deltaTime;
 
-        if(projectileRemaningTime <= 0)
+        if (projectileRemaningTime <= 0)
         {
             Destroy(gameObject);
         }
