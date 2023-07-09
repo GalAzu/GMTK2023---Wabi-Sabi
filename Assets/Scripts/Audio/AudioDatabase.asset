@@ -13,14 +13,22 @@ MonoBehaviour:
   m_Name: AudioDatabase
   m_EditorClassIdentifier: 
   sfxList:
-  - name: 0
+  - name: Win
     volume: 1
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 873be6cf6edbad64085bf268251e994e, type: 3}
     minDistance: 8
     maxDistance: 25
     maxInstances: 1
     randomPitch: 0
     sfxToPlay: 0
+  - name: Lose
+    volume: 1
+    clip: {fileID: 8300000, guid: d5f5974d4aec1ff4ea2deb95abd9dfc9, type: 3}
+    minDistance: 8
+    maxDistance: 25
+    maxInstances: 1
+    randomPitch: 0
+    sfxToPlay: 1
   sfxSequencesList: []
   uiSfxList: []
   bgmList:
