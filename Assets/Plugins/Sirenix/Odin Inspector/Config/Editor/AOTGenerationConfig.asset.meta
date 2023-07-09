@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/AOTGenerationConfig.asset.meta
+<<<<<<<< HEAD:Assets/Sprites/UI.meta
+guid: 453f5784872f12d4783a082883b69c79
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+========
 guid: a30bf1f896d34994d81df362a18f57b6
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
-========
-guid: f198f3ad35849804bb17ee78d4237d8f
-folderAsset: yes
-DefaultImporter:
-  externalObjects: {}
->>>>>>>> Ekin:Assets/Sprites/UI.meta
+>>>>>>>> main:Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/AOTGenerationConfig.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2424804460171123137}
   - component: {fileID: 4718338346749732200}
   m_Layer: 0
-  m_Name: SlowingProjectilePlaceHolder
+  m_Name: MineProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   explosionTime: 0
   playersLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   explosionRadius: 0
   explosionDamage: 0
 --- !u!58 &4718338346749732200
