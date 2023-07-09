@@ -16,7 +16,6 @@ public class bgmHandler : MonoBehaviour
     {
         PlayReleventBGM();
     }
-    [Button]
     public void PlayReleventBGM()
     {
         switch (GameManager.Instance.activeScreen)

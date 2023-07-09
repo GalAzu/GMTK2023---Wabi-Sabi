@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
     #region bgmHandler
-
+    public void StartMusic() => bgmHandler.PlayReleventBGM();
     public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
     {
         float startVolume = audioSource.volume;
