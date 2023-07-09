@@ -25,7 +25,6 @@ public class MineProjectile : Projectile
             yield return null;
         }
         Explode();
-
     }
 
     private void Explode()
@@ -36,15 +35,14 @@ public class MineProjectile : Projectile
         {
             target.GetComponent<PlayerStats>().OnDamage(explosionDamage);
         }
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Explosion, AudioManager.staticSFXpos);
         Destroy(this.gameObject);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats player))
         {
-            player.OnDamage(3f);
-            Destroy(gameObject);
+            Explode();
         }
     }
 }

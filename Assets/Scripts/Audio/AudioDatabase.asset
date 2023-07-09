@@ -16,59 +16,67 @@ MonoBehaviour:
   - name: Win
     volume: 1
     clip: {fileID: 8300000, guid: 873be6cf6edbad64085bf268251e994e, type: 3}
-    minDistance: 8
-    maxDistance: 25
+    minDistance: 995
+    maxDistance: 995
     maxInstances: 1
     randomPitch: 0
     sfxToPlay: 0
   - name: Lose
     volume: 1
     clip: {fileID: 8300000, guid: d5f5974d4aec1ff4ea2deb95abd9dfc9, type: 3}
-    minDistance: 8
-    maxDistance: 25
+    minDistance: 995
+    maxDistance: 995
     maxInstances: 1
     randomPitch: 0
     sfxToPlay: 1
   - name: Explosion
     volume: 1
     clip: {fileID: 8300000, guid: ae2f3055895539a4c90092ec418f777b, type: 3}
-    minDistance: 8
-    maxDistance: 25
-    maxInstances: 1
+    minDistance: 995
+    maxDistance: 995
+    maxInstances: 4
     randomPitch: 0
     sfxToPlay: 2
   - name: FireHit
     volume: 1
     clip: {fileID: 8300000, guid: 7e748e67b1b660d4f99905038cba01ec, type: 3}
-    minDistance: 8
-    maxDistance: 25
-    maxInstances: 1
+    minDistance: 995
+    maxDistance: 995
+    maxInstances: 4
     randomPitch: 0
     sfxToPlay: 3
   - name: FreezeHit
     volume: 1
     clip: {fileID: 8300000, guid: 894d78f91d1620e4ca3e388d51bfeae6, type: 3}
-    minDistance: 8
-    maxDistance: 25
-    maxInstances: 1
+    minDistance: 995
+    maxDistance: 995
+    maxInstances: 4
     randomPitch: 0
     sfxToPlay: 4
   - name: Jump
     volume: 1
     clip: {fileID: 8300000, guid: 8bce4283ee116734ba289060e7500438, type: 3}
-    minDistance: 8
-    maxDistance: 25
-    maxInstances: 1
-    randomPitch: 0
+    minDistance: 995
+    maxDistance: 995
+    maxInstances: 4
+    randomPitch: 1
     sfxToPlay: 5
   - name: Ticking
     volume: 1
     clip: {fileID: 8300000, guid: ed643f1201dd17e4ebf051562fcbcc44, type: 3}
+    minDistance: 995
+    maxDistance: 995
+    maxInstances: 1
+    randomPitch: 0
+    sfxToPlay: 6
+  - name: Shoot
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 3270fb95d4177d848992d1fecd3acee2, type: 3}
     minDistance: 8
     maxDistance: 25
     maxInstances: 1
     randomPitch: 0
-    sfxToPlay: 6
+    sfxToPlay: 7
   sfxSequencesList: []
   uiSfxList: []
   bgmList:

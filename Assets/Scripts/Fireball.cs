@@ -12,6 +12,7 @@ public class Fireball : Projectile
         if (collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats player))
         {
             player.StartBurnCorutine();
+            AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.FireHit, AudioManager.staticSFXpos);
         }
         Destroy(gameObject);
     }

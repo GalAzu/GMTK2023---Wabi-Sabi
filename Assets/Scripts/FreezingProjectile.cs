@@ -10,6 +10,7 @@ public class FreezingProjectile : Projectile
         {
             player.OnDamage(1f);
             player.StartFreezeCorutine();
+            AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.FreezeHit, AudioManager.staticSFXpos);
             Destroy(gameObject);
         }
     }

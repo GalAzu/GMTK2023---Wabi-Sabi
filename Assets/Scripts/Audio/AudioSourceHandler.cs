@@ -93,7 +93,7 @@ public class AudioSourceHandler : MonoBehaviour
             source.outputAudioMixerGroup = AudioManager.instance.sfxBus;
             source.spatialBlend = 1;
             source.clip = clip;
-            source.rolloffMode = AudioRolloffMode.Custom;
+            source.rolloffMode = AudioRolloffMode.Linear;
             source.maxDistance = pool.maxDistanceRolloff;
             source.minDistance = pool.minDistanceRoloff;
             source.spread = 150;
@@ -115,7 +115,7 @@ public class AudioSourceHandler : MonoBehaviour
             source.outputAudioMixerGroup = AudioManager.instance.sfxBus;
             source.spatialBlend = 1;
             source.clip = clip;
-            source.rolloffMode = AudioRolloffMode.Custom;
+            source.rolloffMode = AudioRolloffMode.Linear;
             source.minDistance = pool.minDistanceRoloff;
             source.spread = 150;
             source.maxDistance = pool.maxDistanceRolloff;

@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.performed && isGrounded)
         {
+            AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Jump, AudioManager.staticSFXpos);
             rb.velocity = Vector2.up * jumpForce;
             isJumping = true;
             animator.SetBool("isJumping", true);
@@ -123,7 +124,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             animator.SetBool("isJumping", false);
         }
-        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Jump, AudioManager.staticSFXpos);
     }
 
     public void OnCrouch(InputAction.CallbackContext value)
