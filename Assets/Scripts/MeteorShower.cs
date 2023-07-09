@@ -34,6 +34,7 @@ public class MeteorShower : MonoBehaviour
             {
                 case 1:
                     meteorArray[Random.Range(0, meteorArray.Length)].gameObject.SetActive(true);
+                    meteorsIntensityTimer -= meteorsIntensityTimer;
                     break;
             }
         }
