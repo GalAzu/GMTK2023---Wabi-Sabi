@@ -12,9 +12,9 @@ public class AbilitiesCaster : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerMovement;
     public Transform abilitiesCastPoint;
-    [SerializeField] private Fireball fireballProjectile;
-    [SerializeField] private MineProjectile slowingProjectile;
-    [SerializeField] private FreezingProjectile freezingProjectile;
+    [SerializeField] private Fireball fireballPrefab;
+    [SerializeField] private MineProjectile minePrefab;
+    [SerializeField] private FreezingProjectile freezingPrefab;
     [SerializeField]
     private Array abilitiesArray;
     private bool shootingDirection { get => playerMovement.isFacingRight; }
@@ -49,7 +49,7 @@ public class AbilitiesCaster : MonoBehaviour
 
         if (abilityCastCurrentTime <= 0)
         {
-            CastAbility((Abilities)abilitiesArray.GetValue(UnityEngine.Random.Range(0, abilitiesArray.Length)));    
+            CastAbility((Abilities)abilitiesArray.GetValue(UnityEngine.Random.Range(0, abilitiesArray.Length)));
             abilityCastCurrentTime = abilityCastInterval;
         }
     }
@@ -59,16 +59,17 @@ public class AbilitiesCaster : MonoBehaviour
         switch (castAbility)
         {
             case Abilities.Fireball:
-                Fireball fireball = Instantiate(fireballProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                Fireball fireball = Instantiate(fireballPrefab, abilitiesCastPoint.position, Quaternion.identity);
                 if (shootingDirection) fireball.transform.localScale = flipProjectile;
                 fireball.SetShootingDirection(shootingDirection);
                 break;
-            case Abilities.Slowing:
-                MineProjectile slowing = Instantiate(slowingProjectile, abilitiesCastPoint.position, Quaternion.identity);
-                slowing.SetShootingDirection(shootingDirection);
+            case Abilities.Mines:
+                MineProjectile mine = Instantiate(minePrefab, abilitiesCastPoint.position, Quaternion.identity);
+                mine.SetShootingDirection(shootingDirection);
                 break;
             case Abilities.Freezing:
-                FreezingProjectile freezing = Instantiate(freezingProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                FreezingProjectile freezing = Instantiate(freezingPrefab, abilitiesCastPoint.position, Quaternion.identity);
+                if (shootingDirection) freezing.transform.localScale = flipProjectile;
                 freezing.SetShootingDirection(shootingDirection);
                 break;
         }

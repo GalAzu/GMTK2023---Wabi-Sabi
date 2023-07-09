@@ -5,6 +5,6 @@ using UnityEngine;
 public enum Abilities
 {
     Fireball,
-    Slowing,
+    Mines,
     Freezing,
 }
