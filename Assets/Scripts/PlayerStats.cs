@@ -65,6 +65,7 @@ public class PlayerStats : MonoBehaviour
     private void Death()
     {
         Debug.Log("DEATH IS UPON US");
+        GameManager.Instance.Lose();
     }
     private void ApplyKnockback(Vector2 damageSource)
     {
