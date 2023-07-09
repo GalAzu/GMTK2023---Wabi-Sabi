@@ -2601,6 +2601,14 @@ PrefabInstance:
       propertyPath: defenceBar
       value: 
       objectReference: {fileID: 1206844713}
+    - target: {fileID: 57996242, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
+      propertyPath: slowingProjectile
+      value: 
+      objectReference: {fileID: 2424804460171123137, guid: 56dae1aad856b9347916e7b081948533, type: 3}
+    - target: {fileID: 57996242, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
+      propertyPath: abilityCastInterval
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1279003942191133616, guid: e0cf4701bc9773d4fb5ef72eeafd4e5f, type: 3}
       propertyPath: defenceBar
       value: 
@@ -2988,7 +2996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773e0b558519ba04b926ce4bb71b963f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCastInterval: 0
+  abilityCastInterval: 0.5
   abilityCastCurrentTime: 0
   playerMovement: {fileID: 0}
   abilitiesCastPoint: {fileID: 377460476}

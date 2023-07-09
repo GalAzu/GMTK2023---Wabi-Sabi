@@ -49,7 +49,7 @@ public class AbilitiesCaster : MonoBehaviour
 
         if (abilityCastCurrentTime <= 0)
         {
-            CastAbility((Abilities)abilitiesArray.GetValue(UnityEngine.Random.Range(0, 1/*, abilitiesArray.Length*/)));
+            CastAbility((Abilities)abilitiesArray.GetValue(UnityEngine.Random.Range(0, abilitiesArray.Length)));    
             abilityCastCurrentTime = abilityCastInterval;
         }
     }
