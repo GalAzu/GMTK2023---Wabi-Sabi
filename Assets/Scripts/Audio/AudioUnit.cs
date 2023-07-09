@@ -15,7 +15,12 @@ namespace _AudioStuff
     {
         Win,
         Lose,
-
+        Explosion,
+        FireHit,
+        FreezeHit,
+        Jump,
+        Ticking,
+        Shoot
     }
     [System.Serializable]
     public class AudioUnit
