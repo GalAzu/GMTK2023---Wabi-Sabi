@@ -13,6 +13,8 @@ namespace _AudioStuff
     }
     public enum SfxToPlay
     {
+        Win,
+        Lose,
 
     }
     [System.Serializable]
