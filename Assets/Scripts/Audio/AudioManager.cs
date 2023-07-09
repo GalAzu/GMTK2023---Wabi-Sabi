@@ -5,7 +5,6 @@ using _AudioStuff;
 using UnityEngine.Audio;
 using Sirenix.OdinInspector;
 using System;
-
 [DefaultExecutionOrder(-1000)]
 public class AudioManager : MonoBehaviour
 {
@@ -64,7 +63,7 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
     #region bgmHandler
-    public void StartMusic() => bgmHandler.PlayReleventBGM();
+    // public void StartMusic() => bgmHandler.PlayReleventBGM();
     public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
     {
         float startVolume = audioSource.volume;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using _AudioStuff;
 using Sirenix.OdinInspector;
-[DefaultExecutionOrder(-2000)]
+[DefaultExecutionOrder(-500)]
 public class AudioSourceHandler : MonoBehaviour
 {
 
@@ -13,7 +13,7 @@ public class AudioSourceHandler : MonoBehaviour
     public Dictionary<SeqToPlay, SeqAudioSourcePool> SequencePoolHolder = new();
     [ShowInInspector]
     public Dictionary<UISfxToPlay, UIAudioSourcePool> UIPoolHolder = new();
-    void Start()
+    void Awake()
     {
         InitAudioSources();
     }
@@ -32,10 +32,6 @@ public class AudioSourceHandler : MonoBehaviour
             sfxPoolsHolder.Add(sfx.sfxToPlay, newPool);
             newPool.volume = sfx.volume;
             UpdateSFXPoolData(sfx.sfxToPlay, newPool, sfx.clip);
-            foreach (var source in newPool.audioSources)
-            {
-                source.playOnAwake = false;
-            }
         }
         foreach (AudioUnitSFXSequence seq in AudioManager.instance.data.sfxSequencesList)
         {
@@ -116,6 +112,7 @@ public class AudioSourceHandler : MonoBehaviour
             sourceObject.transform.parent = parentObj.transform;
             parentObj.transform.parent = this.transform;
             AudioSource source = sourceObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
             source.outputAudioMixerGroup = AudioManager.instance.sfxBus;
             source.spatialBlend = 1;
             source.clip = clip;

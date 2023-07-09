@@ -14,8 +14,6 @@ public class PlayerStats : MonoBehaviour
     public float jumpForce;
     private Rigidbody2D rb;
 
-    private float knockbackForce = 1;
-
     private float stackDamagePercentage;
 
     private PlayerDefence playerDefence;
@@ -26,24 +24,15 @@ public class PlayerStats : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = initSpeed;
     }
-    public void OnDamage(float damage, Vector2 damageSource)
-    {
-        if (playerDefence.Defend()) return;
-
-        curHealth -= damage;
-
-        ApplyKnockback(damageSource);
-
-        if (curHealth <= 0)
-        {
-            Death();
-        }
-    }
     public void OnDamage(float damage)
     {
-        if (playerDefence.Defend()) return;
+        if (playerDefence.Defend())
+        {
+            AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.BlockAttack, AudioManager.staticSFXpos);
+            return;
+        }
 
-        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.FreezeHit, AudioManager.staticSFXpos);
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.OnDamage, AudioManager.staticSFXpos);
         curHealth -= damage;
 
         switch (playerID)
@@ -66,11 +55,6 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("DEATH IS UPON US");
         GameManager.Instance.Lose();
-    }
-    private void ApplyKnockback(Vector2 damageSource)
-    {
-        Vector2 knockbackDirection = -((Vector2)transform.position - damageSource).normalized;
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
     #region AbilitiesAndStatusEffects
     public enum StatusEffectType

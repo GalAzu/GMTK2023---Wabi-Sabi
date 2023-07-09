@@ -121,7 +121,7 @@ MonoBehaviour:
   - {fileID: 4552350515406892528}
   - {fileID: 4552350515920879058}
   - {fileID: 4552350515438563788}
-  fadeDuration: 0
+  fadeDuration: 1.5
 --- !u!210 &351334437421265560
 SortingGroup:
   m_ObjectHideFlags: 0

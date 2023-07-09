@@ -75,7 +75,7 @@ MonoBehaviour:
     minDistance: 995
     maxDistance: 995
     maxInstances: 1
-    randomPitch: 0
+    randomPitch: 1
     sfxToPlay: 7
   - name: MeteorWhoosh
     volume: 1
@@ -83,7 +83,7 @@ MonoBehaviour:
     minDistance: 995
     maxDistance: 995
     maxInstances: 1
-    randomPitch: 0
+    randomPitch: 1
     sfxToPlay: 8
   - name: StartGame
     volume: 1
@@ -97,7 +97,7 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: e954dfb8cfe98354cab2bd12aa340a24, type: 3}
     minDistance: 995
-    maxDistance: 995
+    maxDistance: 1
     maxInstances: 1
     randomPitch: 0
     sfxToPlay: 10
@@ -105,7 +105,7 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: fbf8929246cbeff43bd003a0619a1895, type: 3}
     minDistance: 995
-    maxDistance: 995
+    maxDistance: 1
     maxInstances: 1
     randomPitch: 0
     sfxToPlay: 11
@@ -113,7 +113,7 @@ MonoBehaviour:
     volume: 1
     clip: {fileID: 8300000, guid: 223b1d37adafd8c44a3d8a8f005e9e90, type: 3}
     minDistance: 995
-    maxDistance: 995
+    maxDistance: 3
     maxInstances: 1
     randomPitch: 0
     sfxToPlay: 12
@@ -122,8 +122,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 509d5ca5689b3d04ab9874090c02982e, type: 3}
     minDistance: 8
     maxDistance: 995
-    maxInstances: 995
-    randomPitch: 0
+    maxInstances: 3
+    randomPitch: 1
     sfxToPlay: 13
   sfxSequencesList: []
   uiSfxList: []

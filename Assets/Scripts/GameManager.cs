@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float timerMax;
     private float currentTime;
-    public enum ActiveScreen { MainMenu, GameSession }
-    public ActiveScreen activeScreen;
     public PlayerStats[] players;
+    public bool isGamePause;
     public float score;
 
     private void Awake()
@@ -23,17 +23,16 @@ public class GameManager : MonoBehaviour
         MakeSingleton();
         players = FindObjectsOfType<PlayerStats>();
     }
-    void Start()
+
+    public void StartSceneWithIndex(int i)
     {
-        SetGameScreen(ActiveScreen.MainMenu);
-        Time.timeScale = 0;
+        SceneManager.LoadScene(i);
     }
 
     private void Update()
     {
         StartTimer();
     }
-    public void SetGameScreen(ActiveScreen screen) => activeScreen = screen;
     public void QuitGame()
     {
         Application.Quit();
@@ -41,10 +40,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SetGameScreen(ActiveScreen.GameSession);
-        Time.timeScale = 1;
-        UIManager.Instance.mainMenu.FadeOutMenu();
-        AudioManager.instance.StartMusic();
+        StartSceneWithIndex(1);
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.StartGame, AudioManager.staticSFXpos);
     }
     [Button]
     public void Win()
@@ -64,19 +61,26 @@ public class GameManager : MonoBehaviour
     [Button]
     public void Pause()
     {
-        if (activeScreen == ActiveScreen.GameSession)
+        UIManager.Instance.TogglePauseMenu();
+        isGamePause = true;
+    }
+    public void BackToGame()
+    {
+        if (isGamePause)
         {
+            Time.timeScale = 1;
             UIManager.Instance.TogglePauseMenu();
         }
     }
 
     public void BackToMainMenu()
     {
-        UIManager.Instance.mainMenu.gameObject.SetActive(true);
+        StartSceneWithIndex(0);
     }
     [Button]
     public void Lose()
     {
+        UIManager.Instance.ToggleLoseScreen();
         AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Lose, AudioManager.instance.staticSFX.transform.position);
         Time.timeScale = 0;
 
@@ -103,6 +107,13 @@ public class GameManager : MonoBehaviour
         currentTime -= Time.deltaTime;
 
         timerText.text = currentTime.ToString("F0");
+        if (currentTime == 0)
+        {
+            Win();
+        }
     }
-
+    public void PlayGenericUIClick()
+    {
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.GenericClick, AudioManager.staticSFXpos);
+    }
 }

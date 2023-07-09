@@ -14,30 +14,38 @@ public class bgmHandler : MonoBehaviour
 
     void Start()
     {
-        PlayReleventBGM();
+        // PlayReleventBGM();
     }
-    public void PlayReleventBGM()
-    {
-        switch (GameManager.Instance.activeScreen)
-        {
-            case (GameManager.ActiveScreen.MainMenu):
-                bgmSource.clip = data.bgmList[0].clips[0];
-                bgmSource.Play();
-                break;
-            case (GameManager.ActiveScreen.GameSession):
-                bgmSource_2.clip = data.bgmList[0].clips[1];
-                if (bgmSource.isPlaying)
-                {
-                    StartCoroutine(AudioManager.FadeOut(bgmSource, fadeDuration));
-                    bgmSource_2.clip = data.bgmList[0].clips[1];
-                    StartCoroutine(AudioManager.FadeIn(bgmSource_2, fadeDuration));
-                }
-                else
-                {
-                    bgmSource_2.Play();
-                }
-                break;
-        }
-    }
+    // public void PlayReleventBGM()
+    // {
+    //     switch (GameManager.Instance.activeScreen)
+    //     {
+    //         case (GameManager.ActiveScreen.MainMenu):
+    //             bgmSource.clip = data.bgmList[0].clips[0];
+    //             if (bgmSource_2.isPlaying)
+    //             {
+    //                 StartCoroutine(AudioManager.FadeOut(bgmSource_2, fadeDuration));
+    //                 bgmSource_2.clip = data.bgmList[0].clips[1];
+    //                 StartCoroutine(AudioManager.FadeIn(bgmSource, fadeDuration));
+    //             }
+    //             else
+    //                 bgmSource.Play();
+
+    //             break;
+    //         case (GameManager.ActiveScreen.GameSession):
+    //             bgmSource_2.clip = data.bgmList[0].clips[1];
+    //             if (bgmSource.isPlaying)
+    //             {
+    //                 StartCoroutine(AudioManager.FadeOut(bgmSource, fadeDuration));
+    //                 bgmSource_2.clip = data.bgmList[0].clips[1];
+    //                 StartCoroutine(AudioManager.FadeIn(bgmSource_2, fadeDuration));
+    //             }
+    //             else
+    //             {
+    //                 bgmSource_2.Play();
+    //             }
+    //             break;
+    //     }
+    // }
 
 }

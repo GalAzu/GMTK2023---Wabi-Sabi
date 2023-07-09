@@ -25,4 +25,24 @@ public static class SpriteExtensions
         sprite.color = targetColor;
         sprite.gameObject.SetActive(false);
     }
+    public static IEnumerator FadeInSprite(this Image sprite, float fadeDuration)
+    {
+        sprite.gameObject.SetActive(true);
+        Color startColor = sprite.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 1f);
+
+        float counter = 0f;
+
+        while (counter < fadeDuration)
+        {
+            float t = counter / fadeDuration;
+            Color lerpedColor = Color.Lerp(startColor, targetColor, t);
+            sprite.color = lerpedColor;
+
+            counter += Time.deltaTime;
+            yield return null;
+        }
+
+        sprite.color = targetColor;
+    }
 }

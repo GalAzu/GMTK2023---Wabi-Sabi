@@ -56,7 +56,7 @@ public class AbilitiesCaster : MonoBehaviour
     [Button]
     private void CastAbility(Abilities castAbility)
     {
-        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Shoot, AudioManager.instance.staticSFX.transform.position);
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Shoot, AudioManager.staticSFXpos);
         switch (castAbility)
         {
             case Abilities.Fireball:
