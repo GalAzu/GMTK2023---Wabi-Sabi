@@ -123,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             animator.SetBool("isJumping", false);
         }
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Jump, AudioManager.staticSFXpos);
     }
 
     public void OnCrouch(InputAction.CallbackContext value)
