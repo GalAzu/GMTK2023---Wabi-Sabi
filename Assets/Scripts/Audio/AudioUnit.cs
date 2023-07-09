@@ -20,7 +20,13 @@ namespace _AudioStuff
         FreezeHit,
         Jump,
         Ticking,
-        Shoot
+        Shoot,
+        MeteorWhoosh,
+        StartGame,
+        ExitToMainMenu,
+        GenericClick,
+        BlockAttack,
+        OnDamage
     }
     [System.Serializable]
     public class AudioUnit

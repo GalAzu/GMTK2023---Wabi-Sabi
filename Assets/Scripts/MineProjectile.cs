@@ -38,7 +38,7 @@ public class MineProjectile : Projectile
             target.GetComponent<PlayerStats>().OnDamage(explosionDamage);
         }
         AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Explosion, AudioManager.staticSFXpos);
-
+        AudioManager.instance.StopSFXWithIndex(_AudioStuff.SfxToPlay.Ticking, playingSFX);
         Destroy(this.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)
