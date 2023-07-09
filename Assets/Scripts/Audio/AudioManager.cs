@@ -80,16 +80,17 @@ public class AudioManager : MonoBehaviour
     }
     public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime)
     {
-        float startVolume = audioSource.volume;
+        audioSource.volume = 0f;
+        audioSource.Play();
 
-        while (audioSource.volume > 0)
+        while (audioSource.volume < 1f)
         {
-            audioSource.volume += startVolume * Time.deltaTime / FadeTime;
+            audioSource.volume += Time.deltaTime / FadeTime;
 
             yield return null;
         }
-        audioSource.Stop();
-        audioSource.volume = startVolume;
+
+        audioSource.volume = 1f;
     }
 
     #endregion
