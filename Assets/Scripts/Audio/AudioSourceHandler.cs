@@ -32,6 +32,10 @@ public class AudioSourceHandler : MonoBehaviour
             sfxPoolsHolder.Add(sfx.sfxToPlay, newPool);
             newPool.volume = sfx.volume;
             UpdateSFXPoolData(sfx.sfxToPlay, newPool, sfx.clip);
+            foreach (var source in newPool.audioSources)
+            {
+                source.playOnAwake = false;
+            }
         }
         foreach (AudioUnitSFXSequence seq in AudioManager.instance.data.sfxSequencesList)
         {
@@ -93,7 +97,7 @@ public class AudioSourceHandler : MonoBehaviour
             source.outputAudioMixerGroup = AudioManager.instance.sfxBus;
             source.spatialBlend = 1;
             source.clip = clip;
-            source.rolloffMode = AudioRolloffMode.Custom;
+            source.rolloffMode = AudioRolloffMode.Linear;
             source.maxDistance = pool.maxDistanceRolloff;
             source.minDistance = pool.minDistanceRoloff;
             source.spread = 150;
@@ -115,7 +119,7 @@ public class AudioSourceHandler : MonoBehaviour
             source.outputAudioMixerGroup = AudioManager.instance.sfxBus;
             source.spatialBlend = 1;
             source.clip = clip;
-            source.rolloffMode = AudioRolloffMode.Custom;
+            source.rolloffMode = AudioRolloffMode.Linear;
             source.minDistance = pool.minDistanceRoloff;
             source.spread = 150;
             source.maxDistance = pool.maxDistanceRolloff;

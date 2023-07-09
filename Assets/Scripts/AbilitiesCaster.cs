@@ -56,6 +56,7 @@ public class AbilitiesCaster : MonoBehaviour
     [Button]
     private void CastAbility(Abilities castAbility)
     {
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Shoot, AudioManager.instance.staticSFX.transform.position);
         switch (castAbility)
         {
             case Abilities.Fireball:
@@ -87,23 +88,23 @@ public class AbilitiesCaster : MonoBehaviour
         switch (IntensityLevel)
         {
             case (1):
-                abilityCastInterval = 7;
+                abilityCastInterval = 6;
                 //level 1 stats
                 break;
             case (2):
-                abilityCastInterval = 6;
+                abilityCastInterval = 5;
                 //level 2 stats
                 break;
             case (3):
-                abilityCastInterval = 5;
+                abilityCastInterval = 4;
                 //level 3 stats
                 break;
             case (4):
-                abilityCastInterval = 4;
+                abilityCastInterval = 3;
                 //level 4 stats
                 break;
             case (5):
-                abilityCastInterval = 3;
+                abilityCastInterval = 2;
                 //level 5 stats
                 break;
         }

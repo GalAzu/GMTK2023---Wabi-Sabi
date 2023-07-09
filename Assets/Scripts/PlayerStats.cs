@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (playerDefence.Defend()) return;
 
-
+        AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.FreezeHit, AudioManager.staticSFXpos);
         curHealth -= damage;
 
         switch (playerID)

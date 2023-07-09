@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.performed && isGrounded)
         {
+            AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Jump, AudioManager.staticSFXpos);
             rb.velocity = Vector2.up * jumpForce;
             isJumping = true;
             animator.SetBool("isJumping", true);

@@ -130,7 +130,18 @@ public class AudioManager : MonoBehaviour
         var sfx = data.uiSfxList.Find(num => num.uiSfxToPlay == sfxToPlay);
         return sfx;
     }
+    public AudioUnitSFX GetUIsfx(SfxToPlay sfxToPlay)
+    {
+        Debug.LogWarning($"AUDIO IS MISSING : NO ENUM {sfxToPlay} HAS BEEN FOUND IN THE UI SFX POOL");
+        var sfx = data.sfxList.Find(num => num.sfxToPlay == sfxToPlay);
+        return sfx;
+    }
     public void PlayStaticOneShot(UISfxToPlay sfxToPlay)
+    {
+        var sfx = GetUIsfx(sfxToPlay);
+        staticSFX.PlayOneShot(sfx.clip);
+    }
+    public void PlayStaticOneShot(SfxToPlay sfxToPlay)
     {
         var sfx = GetUIsfx(sfxToPlay);
         staticSFX.PlayOneShot(sfx.clip);
