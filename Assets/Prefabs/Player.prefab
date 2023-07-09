@@ -213,7 +213,7 @@ MonoBehaviour:
   acceleration: 0
   deceleration: 0
   velPower: 0
-  gravityMultiplier: 0
+  midAirSlowFactor: 0
 --- !u!114 &5385281869643523949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   maxHealth: 100
-  curHealth: 202020
-  initSpeed: 0
+  curHealth: 100
+  initSpeed: 50
   jumpForce: 6.5
   statusEffects: 
 --- !u!95 &5119713776252243499
@@ -405,9 +405,9 @@ MonoBehaviour:
   abilityCastCurrentTime: 0
   playerMovement: {fileID: 0}
   abilitiesCastPoint: {fileID: 690864241}
-  fireballProjectile: {fileID: -3977356124268767255, guid: cf449f78d5ae6e84888ef9d0fc822e3c, type: 3}
-  slowingProjectile: {fileID: 0}
-  freezingProjectile: {fileID: 216665814576137570, guid: f33130473fccba24e8d2fb782c97e7ae, type: 3}
+  fireballPrefab: {fileID: -3977356124268767255, guid: cf449f78d5ae6e84888ef9d0fc822e3c, type: 3}
+  minePrefab: {fileID: 2424804460171123137, guid: 56dae1aad856b9347916e7b081948533, type: 3}
+  freezingPrefab: {fileID: 216665814576137570, guid: f33130473fccba24e8d2fb782c97e7ae, type: 3}
   IntensityLevel: 0
   intensityIntervalInSeconds: 20
 --- !u!114 &-734778201259509227
