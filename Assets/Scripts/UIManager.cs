@@ -22,7 +22,14 @@ public class UIManager : MonoBehaviour
     {
         MakeSingleton();
     }
-    public void UpdateWinScreen() => winScreen.UpdateScoreText();
+    public void ToggleWinScreen()
+    {
+        bool isSwitch = winScreen.gameObject.activeSelf;
+        isSwitch = !isSwitch;
+        winScreen.gameObject.SetActive(isSwitch);
+        darkBG.gameObject.SetActive(isSwitch);
+        winScreen.UpdateScoreText();
+    }
     private void MakeSingleton()
     {
         if (Instance != null && Instance != this)

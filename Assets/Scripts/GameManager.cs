@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Sirenix.OdinInspector;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] private GameObject mainMenuUI;
     [SerializeField] private TextMeshProUGUI timerText;
 
     [SerializeField] private float timerMax;
@@ -46,11 +46,13 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.mainMenu.FadeOutMenu();
         AudioManager.instance.StartMusic();
     }
+    [Button]
     public void Win()
     {
         AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Lose, AudioManager.instance.staticSFX.transform.position);
+        UIManager.Instance.ToggleWinScreen();
         GetEndScore();
-        UIManager.Instance.UpdateWinScreen();
+        Time.timeScale = 0;
     }
     public void GetEndScore()
     {
@@ -59,17 +61,25 @@ public class GameManager : MonoBehaviour
             score += player.curHealth;
         }
     }
+    [Button]
     public void Pause()
     {
-
+        if (activeScreen == ActiveScreen.GameSession)
+        {
+            UIManager.Instance.TogglePauseMenu();
+        }
     }
+
     public void BackToMainMenu()
     {
-
+        UIManager.Instance.mainMenu.gameObject.SetActive(true);
     }
+    [Button]
     public void Lose()
     {
         AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Lose, AudioManager.instance.staticSFX.transform.position);
+        Time.timeScale = 0;
+
     }
     private void MakeSingleton()
     {

@@ -48,3 +48,7 @@ MonoBehaviour:
   playerOneDefenceBar: {fileID: 0}
   playerTwoHealthBar: {fileID: 0}
   playerTwoDefenceBar: {fileID: 0}
+  mainMenu: {fileID: 0}
+  darkBG: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  winScreen: {fileID: 0}
