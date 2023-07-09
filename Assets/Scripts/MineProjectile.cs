@@ -9,11 +9,13 @@ public class MineProjectile : Projectile
     public LayerMask playersLayer;
     [SerializeField] private float explosionRadius;
     [SerializeField] private float explosionDamage;
+    private int playingSFX;
 
     private void Start()
     {
         projectileSpeed = 0;
         StartCoroutine(StartProjectileTimer());
+        playingSFX = AudioManager.instance.PlaySFXFromPoolAndGetIndex(_AudioStuff.SfxToPlay.Ticking, AudioManager.staticSFXpos);
     }
 
     private IEnumerator StartProjectileTimer()
@@ -36,6 +38,7 @@ public class MineProjectile : Projectile
             target.GetComponent<PlayerStats>().OnDamage(explosionDamage);
         }
         AudioManager.instance.PlaySFXFromPool(_AudioStuff.SfxToPlay.Explosion, AudioManager.staticSFXpos);
+
         Destroy(this.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)

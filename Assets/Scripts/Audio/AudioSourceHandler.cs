@@ -32,6 +32,10 @@ public class AudioSourceHandler : MonoBehaviour
             sfxPoolsHolder.Add(sfx.sfxToPlay, newPool);
             newPool.volume = sfx.volume;
             UpdateSFXPoolData(sfx.sfxToPlay, newPool, sfx.clip);
+            foreach (var source in newPool.audioSources)
+            {
+                source.playOnAwake = false;
+            }
         }
         foreach (AudioUnitSFXSequence seq in AudioManager.instance.data.sfxSequencesList)
         {
