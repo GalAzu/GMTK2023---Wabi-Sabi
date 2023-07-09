@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58df593351e1528429ae6da5b9c32577, type: 3}
   m_Name: AudioDatabase
   m_EditorClassIdentifier: 
-  sfxList: []
+  sfxList:
+  - name: 0
+    volume: 1
+    clip: {fileID: 0}
+    minDistance: 8
+    maxDistance: 25
+    maxInstances: 1
+    randomPitch: 0
+    sfxToPlay: 0
   sfxSequencesList: []
   uiSfxList: []
   bgmList:
