@@ -13,19 +13,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timerMax;
     private float currentTime;
     public enum ActiveScreen { MainMenu, GameSession }
-    public ActiveScreen activeScreen;   
+    public ActiveScreen activeScreen;
+    public MainMenu mainMenu;
 
     private void Awake()
     {
         currentTime = timerMax;
         MakeSingleton();
     }
+    void Start()
+    {
+        SetGameScreen(ActiveScreen.MainMenu);
+        Time.timeScale = 0;
+    }
 
     private void Update()
     {
         StartTimer();
     }
-
+    public void SetGameScreen(ActiveScreen screen) => activeScreen = screen;
     public void QuitGame()
     {
         Application.Quit();
@@ -33,7 +39,10 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        mainMenuUI.SetActive(false);
+        SetGameScreen(ActiveScreen.GameSession);
+        Time.timeScale = 1;
+        mainMenu.FadeOutMenu();
+        AudioManager.instance.StartMusic();
     }
 
     private void MakeSingleton()
