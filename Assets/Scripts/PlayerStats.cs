@@ -9,9 +9,9 @@ public class PlayerStats : MonoBehaviour
 
     public float maxHealth = 100;
     public float curHealth;
-    private float initSpeed = 5;
-    public float moveSpeed;
-    public float jumpForce = 5;
+    [SerializeField] private float initSpeed;
+    public float moveSpeed { set; get; }
+    public float jumpForce;
     private Rigidbody2D rb;
 
     private float knockbackForce = 1;
@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour
     public void OnDamage(float damage)
     {
         if (playerDefence.Defend()) return;
-        
+
 
         curHealth -= damage;
 

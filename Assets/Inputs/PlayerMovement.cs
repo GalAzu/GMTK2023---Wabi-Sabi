@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float deceleration;
     [SerializeField] private float velPower;
     [Header("Jumping")]
-    [SerializeField] private float gravityMultiplier;
+    [SerializeField] private float midAirSlowFactor;
 
     private float lastGroundedeTime;
     private float lastJumpTime;
@@ -44,19 +44,29 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-
+    void FixedUpdate()
+    {
+        if (!isGrounded && isJumping)
+        {
+            rb.velocity = new Vector2(horizontal * moveSpeed * midAirSlowFactor, rb.velocity.y);
+            rb.gravityScale = 1.7f;
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            rb.gravityScale = 1;
+        }
+    }
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        //rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-
         //RUNNING
-        float targetSpeed = horizontal * moveSpeed;
-        float speedDiff = targetSpeed - rb.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
-        float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, velPower) * Mathf.Sign(speedDiff);
-        rb.AddForce(movement * Vector2.right);
+        // float targetSpeed = horizontal * moveSpeed;
+        // float speedDiff = targetSpeed - rb.velocity.x;
+        // float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
+        // float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, velPower) * Mathf.Sign(speedDiff);
+        // rb.AddForce(movement * Vector2.right);
 
 
         //Jumping
@@ -81,7 +91,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnMovement(InputAction.CallbackContext context)
     {
-        horizontal = context.ReadValue<Vector2>().x;
+        if (isGrounded)
+            horizontal = context.ReadValue<Vector2>().x * 1;
+        else
+            horizontal = context.ReadValue<Vector2>().x * midAirSlowFactor;
     }
 
     public void OnJump(InputAction.CallbackContext value)
