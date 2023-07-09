@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timerMax;
     private float currentTime;
     public enum ActiveScreen { MainMenu, GameSession }
+    public ActiveScreen activeScreen;
 
     private void Awake()
     {

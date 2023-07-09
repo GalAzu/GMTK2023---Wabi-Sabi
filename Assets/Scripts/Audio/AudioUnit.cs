@@ -5,42 +5,15 @@ namespace _AudioStuff
 {
     public enum SeqToPlay
     {
-        SpiritBomb,
-        Sharingan,
-        RagingDemon,
-        zeeku,
-        EnemyHaste,
+
     }
     public enum UISfxToPlay
     {
-        StartGame,
-        SuccessfulClick,
-        UnsuccessfulClick,
-        MoveOnMenu,
-        OnStartGame,
-        LevelUp,
-        MenuBack,
-        OnPerkGet,
-        CrosshairMovement,
+
     }
     public enum SfxToPlay
     {
-        explosion,
-        gainOrb,
-        gunshot,
-        LaserBeam,
-        spreadShot,
-        placeTower,
-        homeDamage,
-        addOnWeapon,
-        droneAttack,
-        LazorOneShot,
-        OnTowerActions,
-        attackingOrb,
-        SlowNova,
-        SwordExpansion,
-        DeathWave,
-        RagingDemonHit
+
     }
     [System.Serializable]
     public class AudioUnit
