@@ -6,8 +6,10 @@ public class MeteorShower : MonoBehaviour
 {
     private Transform[] meteorArray;
 
-    private float meteorsIntensityTimerMax = 3f;
+    private float meteorsIntensityTimerMax = 1.2f;
     private float meteorsIntensityTimer = 0f;
+
+    private float intensityTimer = 0f;
 
     private int intensityLevel = 1;
 
@@ -30,13 +32,21 @@ public class MeteorShower : MonoBehaviour
 
         if(meteorsIntensityTimer >= meteorsIntensityTimerMax)
         {
-            switch (intensityLevel)
-            {
-                case 1:
-                    meteorArray[Random.Range(0, meteorArray.Length)].gameObject.SetActive(true);
-                    meteorsIntensityTimer -= meteorsIntensityTimer;
-                    break;
-            }
+                int randomIndex = Random.Range(0, meteorArray.Length);
+
+                if (!meteorArray[randomIndex].gameObject.activeSelf)
+                {
+                     meteorArray[randomIndex].gameObject.SetActive(true);
+                     meteorsIntensityTimer -= meteorsIntensityTimer;
+                }
+        }
+
+        intensityTimer += Time.deltaTime;
+
+        if(intensityTimer > 20)
+        {
+            meteorsIntensityTimerMax -= .2f;
+            intensityTimer -= intensityTimer;
         }
     }
 
