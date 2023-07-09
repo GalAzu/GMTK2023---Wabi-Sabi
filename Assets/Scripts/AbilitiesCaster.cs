@@ -22,6 +22,8 @@ public class AbilitiesCaster : MonoBehaviour
     [SerializeField] private int intensityIntervalInSeconds = 20;
     private int maxIntensityLevel = 5;
 
+    private Vector3 flipProjectile = new Vector3(0.4f, 0.4f, 1f); //Projectile size on the inspector. Only x is negative.
+
     private void Awake()
     {
         playerMovement = GetComponentInParent<PlayerMovement>();
@@ -58,6 +60,7 @@ public class AbilitiesCaster : MonoBehaviour
         {
             case Abilities.Fireball:
                 Fireball fireball = Instantiate(fireballProjectile, abilitiesCastPoint.position, Quaternion.identity);
+                if (shootingDirection) fireball.transform.localScale = flipProjectile;
                 fireball.SetShootingDirection(shootingDirection);
                 break;
             case Abilities.Slowing:
