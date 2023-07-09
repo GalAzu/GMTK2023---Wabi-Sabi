@@ -10,42 +10,35 @@ public class bgmHandler : MonoBehaviour
     public AudioSource bgmSource_2;
     public AudioManagerData data;
     private double startTime;
-    public float fadeOutDuration;
+    public float fadeDuration;
 
-    public int RandomGameplayMusic()
+    void Start()
     {
-        var i = Random.Range(0, data.bgmList.Length);
-        return i;
-    }
-    public void StopAudioIfPlaying(AudioSource source)
-    {
-        if (source.clip != null && source.isPlaying)
-        {
-            source.Stop();
-        }
-    }
-    public double GetDuration(AudioClip clip)
-    {
-        double duration = clip.samples / clip.frequency;
-        return duration;
-
+        PlayReleventBGM();
     }
     [Button]
     public void PlayReleventBGM()
     {
-        if (GameManager.Instance.activeScreen == GameManager.ActiveScreen.MainMenu)
+        switch (GameManager.Instance.activeScreen)
         {
-            bgmSource.clip = data.bgmList[0].clips[0];
-            bgmSource.Play();
-        }
-        else if (GameManager.Instance.activeScreen == GameManager.ActiveScreen.GameSession)
-        {
-            if (bgmSource.isPlaying)
-            {
-                AudioManager.FadeOut(bgmSource, fadeOutDuration);
+            case (GameManager.ActiveScreen.MainMenu):
+                bgmSource.clip = data.bgmList[0].clips[0];
+                bgmSource.Play();
+                break;
+            case (GameManager.ActiveScreen.GameSession):
                 bgmSource_2.clip = data.bgmList[0].clips[1];
-                bgmSource_2.PlayScheduled(fadeOutDuration);
-            }
+                if (bgmSource.isPlaying)
+                {
+                    StartCoroutine(AudioManager.FadeOut(bgmSource, fadeDuration));
+                    bgmSource_2.clip = data.bgmList[0].clips[1];
+                    StartCoroutine(AudioManager.FadeIn(bgmSource_2, fadeDuration));
+                }
+                else
+                {
+                    bgmSource_2.Play();
+                }
+                break;
         }
     }
+
 }
