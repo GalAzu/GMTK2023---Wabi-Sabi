@@ -6,7 +6,7 @@ public class MeteorShower : MonoBehaviour
 {
     private Transform[] meteorArray;
 
-    private float meteorsIntensityTimerMax = 1.2f;
+    private float meteorsIntensityTimerMax = 0.7f;
     private float meteorsIntensityTimer = 0f;
 
     private float intensityTimer = 0f;
@@ -45,7 +45,7 @@ public class MeteorShower : MonoBehaviour
 
         if(intensityTimer > 20)
         {
-            meteorsIntensityTimerMax -= .2f;
+            meteorsIntensityTimerMax -= .1f;
             intensityTimer -= intensityTimer;
         }
     }
