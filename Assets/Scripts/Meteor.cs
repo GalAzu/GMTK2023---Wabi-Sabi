@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool startMoving = false;
+
+    private void OnEnable()
     {
-        
+        startMoving = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (startMoving)
+        {
+            transform.Translate(0f, -10f * Time.deltaTime, 0f);
+        }
     }
 }
