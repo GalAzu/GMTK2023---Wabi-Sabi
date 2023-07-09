@@ -17,7 +17,7 @@ public class AudioManagerData : ScriptableObject
     [FoldoutGroup("SFX Database")]
     public List<AudioUnitUI> uiSfxList = new List<AudioUnitUI>();
     [FoldoutGroup("BGM Stuff")]
-    public AudioUnitBGM[] GamePlayMusic;
+    public AudioUnitBGM[] bgmList;
     [FoldoutGroup("BGM Stuff")]
     public AudioUnitBGM IntroToMainMenu;
 

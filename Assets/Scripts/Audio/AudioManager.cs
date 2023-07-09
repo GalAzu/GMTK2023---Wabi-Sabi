@@ -4,7 +4,6 @@ using UnityEngine;
 using _AudioStuff;
 using UnityEngine.Audio;
 using Sirenix.OdinInspector;
-using MyBox;
 using System;
 
 [DefaultExecutionOrder(-1000)]
@@ -66,21 +65,20 @@ public class AudioManager : MonoBehaviour
     }
     #region bgmHandler
 
-    public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    public static IEnumerator FadeOut(AudioSource audioSource, double FadeTime)
     {
         float startVolume = audioSource.volume;
 
         while (audioSource.volume > 0)
         {
-            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+            audioSource.volume -= startVolume * Time.deltaTime / (float)FadeTime;
 
             yield return null;
         }
         audioSource.Stop();
         audioSource.volume = startVolume;
     }
-    public void PlayGameplayMusic() => bgmHandler.PlaySequencedBGM();
-    public void PlayIntroMusic() => bgmHandler.PlayIntroBGM();
+
     #endregion
 
     #region sfxHandler
@@ -257,7 +255,6 @@ public class AudioManager : MonoBehaviour
         mixer.SetFloat("bgmBus", Mathf.Log10(musicVolume) * 20);
 
     }
-
 
     #endregion
 
