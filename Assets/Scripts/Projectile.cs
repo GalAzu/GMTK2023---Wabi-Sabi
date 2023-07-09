@@ -8,8 +8,11 @@ public class Projectile : MonoBehaviour
 
     private float projectileLifeSpan = 5f;
     private float projectileRemaningTime;
+    [SerializeField]
+    protected float projectileSpeed = 10;
 
-    private bool shootingRight = true;
+    [SerializeField]
+    private bool shootingRight;
 
     private void Awake()
     {
@@ -26,7 +29,7 @@ public class Projectile : MonoBehaviour
     {
         projectileRemaningTime -= Time.deltaTime;
 
-        if(projectileRemaningTime <= 0)
+        if (projectileRemaningTime <= 0)
         {
             Destroy(gameObject);
         }
@@ -36,11 +39,13 @@ public class Projectile : MonoBehaviour
     {
         if (!shootingRight)
         {
-            transform.Translate(-direction * Time.deltaTime * 10);
+            Debug.Log("SHOOT LEFT");
+            transform.Translate(-direction * Time.deltaTime * projectileSpeed);
         }
         else
         {
-            transform.Translate(direction * Time.deltaTime * 10);
+            Debug.Log("SHOOT RIGHT");
+            transform.Translate(direction * Time.deltaTime * projectileSpeed);
         }
     }
 

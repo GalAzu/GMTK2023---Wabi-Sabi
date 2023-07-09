@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float timerMax;
     private float currentTime;
+    public enum ActiveScreen { MainMenu, GameSession }
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void StartTimer()
     {
-        if(currentTime <= 0)
+        if (currentTime <= 0)
         {
             currentTime = timerMax;
         }
