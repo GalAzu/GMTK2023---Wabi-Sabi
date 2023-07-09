@@ -10,7 +10,7 @@ public class bgmHandler : MonoBehaviour
     public AudioSource bgmSource_2;
     public AudioManagerData data;
     private double startTime;
-    public double fadeOutDuration;
+    public float fadeOutDuration;
 
     public int RandomGameplayMusic()
     {
